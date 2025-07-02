@@ -1,11 +1,15 @@
 class UrlsController < ApplicationController
+  def new 
+    @short_url = nil
+  end
+
   def create 
     url = Url.new(url_params)
-    if url.save 
-      render json: { short_url: short_url(url.short), original: url.original }, status: :created
-    else 
-      render json: {errors: url.errors.full_messages }, status: :unprocessable_entity
+    unless url.save
+      return render json: {errors: url.errors.full_messages }, status: :unprocessable_entity
     end
+
+    return render json: { short_url: short_url(url.short), original: url.original }, status: :created
   end
 
   def show 
@@ -15,11 +19,11 @@ class UrlsController < ApplicationController
 
   def redirect 
     url = Url.find_by(short: params[:short])
-    if url 
-      redirect_to url.original, allow_other_host: true 
-    else
-      render json: { error: "URL not found" }, status: :not_found
+    unless url 
+      return render json: { error: "URL not found" }, status: :not_found
     end
+
+    return redirect_to url.original, allow_other_host: true 
   end
 
   private 
