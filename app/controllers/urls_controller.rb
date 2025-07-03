@@ -5,14 +5,14 @@ class UrlsController < ApplicationController
   end
 
   def create 
-    url = Url.new(url_params)
-    if url.save 
-      @short_url = short_url(url.short)
+    @url = Url.new(url_params)
+    if @url.save 
+      @short_url = short_url(@url.short)
       return render :index 
     end
 
     @short_url = nil 
-    flash.now[:alert] = url.errors.full_messages.join(', ')
+    flash.now[:alert] = @url.errors.full_messages.join(', ')
     render :index, status: :unprocessable_entity
   end
 
