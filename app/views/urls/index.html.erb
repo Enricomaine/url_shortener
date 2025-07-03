@@ -208,7 +208,9 @@
                 readonly: @short_url.present? %>
           </div>
 
-          <%= form.submit "Shorten URL", class: "btn primary" %>
+          <% unless defined?(@short_url) && @short_url.present? %>
+            <%= form.submit "Shorten URL", class: "btn primary" %>
+          <% end %>
         <% end %>
 
         <% if defined?(@short_url) && @short_url.present? %>
@@ -225,7 +227,8 @@
     </div>
 
     <div class="footer">
-      Shortened URLs are safe to share and valid for 24 hours
+      Shortened URLs are safe to share and valid for 24 hours <br>
+      Click here for more projects <a href="https://github.com/Enricomaine">Enricomaine</a>
     </div>
   </div>
 </body>

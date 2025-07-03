@@ -4,6 +4,10 @@ class Url < ApplicationRecord
 
   before_create :generate_short_code
 
+  def expired?
+    created_at < 24.hours.ago
+  end
+  
   private 
 
   def generate_short_code
@@ -12,4 +16,5 @@ class Url < ApplicationRecord
       break code unless Url.exists?(short: code)
     end
   end
+
 end

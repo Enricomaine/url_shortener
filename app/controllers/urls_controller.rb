@@ -24,11 +24,15 @@ class UrlsController < ApplicationController
   def redirect 
     url = Url.find_by(short: params[:short])
 
-    if url.present?
-      return redirect_to url.original, allow_other_host: true
+    unless url 
+      return render json: { error: "URL not found" }, status: :not_found
     end
 
-    render json: { error: "URL not found" }, status: :not_found
+    if url.expired?
+      return render json: { error: "URL expired" }, status: :gone
+    end
+
+    return redirect_to url.original, allow_other_host: true
   end
 
   private 
