@@ -15,3 +15,11 @@ This is a URL shortener project developed in Ruby on Rails, created by [Enrico M
 - HTML, CSS
 - Rake + Cron
 - Docker
+
+## How to run locally
+
+1. Clone this repository or download the zip
+2. Enter in the repository `cd url_shortener`
+3. Install dependencies `bundle install`
+4. Setup database `db:setup`
+5. Run server `rails server`
