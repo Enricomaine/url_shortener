@@ -1,24 +1,17 @@
-# README
+# URL shortener
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a URL shortener project developed in Ruby on Rails, created by [Enrico Maine](https://github.com/Enricomaine).
 
-Things you may want to cover:
+## Features
+- Shortens long URLs into shorter, easier-to-share links with automatic redirection
+- Responsive and simple web interface
+- Implementation of link validity after 24 hours
+- Automatic cleaning of expired URLs for database optimization
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Technologies
+- Ruby 3.4.4
+- Rails 8.0.2
+- PostgreSQL
+- HTML, CSS
+- Rake + Cron
+- Docker

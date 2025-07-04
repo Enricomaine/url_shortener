@@ -1,4 +1,4 @@
-class WeeklyCleanupJob < ApplicationJob
+class DailyCleanupJob < ApplicationJob
   queue_as :default
 
   def perform
